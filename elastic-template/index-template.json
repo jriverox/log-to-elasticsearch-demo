@@ -1,0 +1,158 @@
+{
+    "index_patterns": [
+      "qas*",
+      "prd*"
+    ],
+    "settings": {
+      "index": {
+        "number_of_shards": "1",
+		"analysis": {
+			"char_filter": {
+				"char_filter_remover": {
+				  "type": "mapping",
+				  "mappings": [
+					"\\n=> "
+				  ]
+				}
+			},
+			"analyzer": {
+				"analyzer_custom_standard": {
+				  "filter": [
+					"standard",
+					"lowercase",
+					"asciifolding"
+				  ],
+				  "char_filter": [
+					"char_filter_remover"
+				  ],
+				  "type": "custom",
+				  "tokenizer": "standard"
+				}
+			}
+		}
+      }
+    },
+    "mappings": {
+      "LogEvent": {
+        "properties": {
+          "Ajax": {
+            "type": "text"
+          },
+          "Application": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "Class": {
+            "type": "text",
+			"fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "Date": {
+            "type": "date"
+          },
+          "Exception": {
+            "type": "text",
+			"analyzer": "analyzer_custom_standard"
+          },
+          "HostName": {
+            "type": "keyword",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "Level": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "Message": {
+            "type": "text",
+			"analyzer": "analyzer_custom_standard",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "Method": {
+            "type": "text",
+			"fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "Navigator": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "Pais": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "Path": {
+            "type": "text"
+          },
+          "ThreadId": {
+            "type": "long"
+          },
+          "Trace": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "Url": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "User": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          }
+        }
+      }
+    },
+    "aliases": {}
+  }

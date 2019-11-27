@@ -1,0 +1,9 @@
+GET qas-miapp-componente-2-2019.11.27/_analyze
+{
+  "analyzer" : "standard",
+  "text" : "Quick \n Brown Foxes!"
+}
+
+DELETE _template/log_template
+
+PUT _template/log_template
